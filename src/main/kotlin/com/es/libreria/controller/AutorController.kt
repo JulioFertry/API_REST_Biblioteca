@@ -18,6 +18,10 @@ class AutorController {
     RESPONSABILIDADES
     Manejar las solicitudes HTTP
     Comprobacion mínima de datos
+
+        - Comprobar que lo que viene no es null
+        - Llamar al Service
+        - Responder al cliente
     */
 
 

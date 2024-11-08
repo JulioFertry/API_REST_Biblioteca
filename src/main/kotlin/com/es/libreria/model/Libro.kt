@@ -25,5 +25,5 @@ data class Libro(
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "autor_id", nullable = false)
     @JsonBackReference
-    var autor: Autor
+    var autor: Autor?
 )
