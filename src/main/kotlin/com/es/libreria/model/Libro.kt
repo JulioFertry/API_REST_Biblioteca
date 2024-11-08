@@ -1,5 +1,6 @@
 package com.es.libreria.model
 
+import com.fasterxml.jackson.annotation.JsonBackReference
 import jakarta.persistence.*
 import java.time.LocalDate
 
@@ -9,7 +10,7 @@ import java.time.LocalDate
 data class Libro(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0,
+    val id: Long? = null,
 
     @Column(nullable = false)
     var titulo: String,
@@ -17,12 +18,12 @@ data class Libro(
     var genero: String,
 
     @Column(name = "anio_publicacion")
-    @Temporal(TemporalType.DATE) // Trata el atributo como Date
-    var anioPublicacion: LocalDate,
+    var anioPublicacion: Int,
 
     var precio: Double,
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "autor_id", nullable = false)
+    @JsonBackReference
     var autor: Autor
 )
